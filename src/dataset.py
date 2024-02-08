@@ -57,6 +57,34 @@ class RafDataset(data.Dataset):
 
         if self.transform is not None:
             image = self.transform(image)
+
+class lfwpseudo(data.Dataset):
+    def __init__(self, args, transform=None):
+        self.dataset = args.lfw_path
+        df = pd.read_csv('/home/jihyun/code/label_smec/pseudo_label/pseudo_labels_128_1_only_label.txt', sep=' ', header=None)
+        self.file_list = os.listdir(self.dataset)
+        self.transform = transform 
+        self.file_path = []
+        
+        self.label = df.iloc[:, 0].values
+        
+        for f in self.file_list:
+            image_name = os.path.join(self.dataset, f)
+            self.file_path.append(image_name)
+
+    def __len__(self):
+        return len(self.file_path)
+
+    def __getitem__(self, idx):
+        label = self.label[idx]
+        image = cv2.imread(self.file_path[idx])
+        if self.transform is not None:
+            image = self.transform(image)
+        else:
+            image = transforms.ToTensor()(image)
+
+        return image, label
+    
         
         if self.clean:
             image1 = transforms.RandomHorizontalFlip(p=1)(image)
