@@ -58,7 +58,7 @@ class RafDataset(data.Dataset):
         if self.transform is not None:
             image = self.transform(image)
 
-class lfwpseudo(data.Dataset):
+class LFWpseudo(data.Dataset):
     def __init__(self, args, transform=None):
         self.dataset = args.lfw_path
         df = pd.read_csv('/home/jihyun/code/label_smec/pseudo_label/pseudo_labels_128_1_only_label.txt', sep=' ', header=None)
