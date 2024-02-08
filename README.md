@@ -4,3 +4,5 @@ ResNet pretrained model: https://drive.google.com/file/d/1yQRdhSnlocOsZA4uT_8VO0
 
 RAF-DB path
 LFW path 
+
+RankMixup : https://github.com/cvlab-yonsei/RankMixup
