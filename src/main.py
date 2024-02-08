@@ -21,7 +21,7 @@ from elr_loss import *
 # from model_pretrained import *
 
 from dataset import RafDataset
-from model_pre import *
+from model import *
 from utils import *
 from resnet import *
 from loss import ACLoss
